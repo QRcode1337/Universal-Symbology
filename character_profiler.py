@@ -1,10 +1,20 @@
 import json
 
 class CharacterProfiler:
+    _symbology_cache = {}
+    _symbols_cache = {}
+    
     def __init__(self, symbology_file):
-        with open(symbology_file, 'r') as f:
-            self.symbology = json.load(f)
-        self.symbols = self._extract_symbols()
+        if symbology_file not in self._symbology_cache:
+            with open(symbology_file, 'r') as f:
+                self._symbology_cache[symbology_file] = json.load(f)
+        
+        self.symbology = self._symbology_cache[symbology_file]
+        
+        if symbology_file not in self._symbols_cache:
+            self._symbols_cache[symbology_file] = self._extract_symbols()
+        
+        self.symbols = self._symbols_cache[symbology_file]
 
     def _find_section(self, section_name):
         """Finds a section by name in the symbology data."""
@@ -106,12 +116,9 @@ class CharacterProfiler:
             "Compassionate": "Circle",
             "Leader": "Angle",
         }
-        symbols = []
-        for trait in character_data.get("PersonalityTraits", []):
-            symbol_name = trait_map.get(trait)
-            if symbol_name and symbol_name in self.symbols:
-                symbols.append(symbol_name)
-        return symbols
+        traits = character_data.get("PersonalityTraits", [])
+        return [trait_map[trait] for trait in traits 
+                if trait in trait_map and trait_map[trait] in self.symbols]
 
     def _determine_role_symbol(self, character_data):
         """Determines the role symbol."""
