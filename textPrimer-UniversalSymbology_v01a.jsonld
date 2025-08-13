@@ -411,7 +411,6 @@
               "description": "Adaptable, communicative, intellectual.",
               "symbolism": "Reflects the Curve (adaptability) modality."
             },
-            // Additional zodiac signs follow the same structure
             {
               "@type": "ZodiacSign",
               "@id": "http://example.org/universalSymbology#Pisces",

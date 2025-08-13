@@ -12,35 +12,45 @@ This pseudocode serves as a streamlined process for profiling a video game chara
 
 Pseudocode: {
 // Pseudocode for Profiling a Video Game Character Using Universal Symbology and UWS
+// This document outlines a step-by-step process for creating a symbolic profile of a
+// video game character using the Universal Writing System (UWS).
 
-// 1. Extract Information from Data Sets
+// Step 1: Extract Information from Data Sets
+// The first step is to gather all relevant information about the character from various sources.
+// This data will be the raw material for the symbolic mapping.
 
 // a. Extract from Background Data Set
+// Gather narrative and gameplay information about the character.
 DEFINE BackgroundData:
-  Origin: // Place of birth, cultural background
-  Role: // Character's role or profession (e.g., warrior, mage)
-  PersonalityTraits: // Character's key traits (e.g., brave, cunning, compassionate)
-  Abilities: // Special powers, talents, or skills
-  Goals: // Character's main motivations (e.g., revenge, knowledge)
+  Origin: // Place of birth, cultural background, species, etc.
+  Role: // The character's primary function or class (e.g., warrior, mage, healer).
+  PersonalityTraits: // Key adjectives describing the character's nature (e.g., brave, cunning, compassionate).
+  Abilities: // Special powers, talents, or unique skills.
+  Goals: // The character's primary motivations and objectives (e.g., revenge, seeking knowledge, protecting others).
 
 // b. Extract from Astrological Data Set
+// Use the character's birthdate (if available) or assign a fitting sign to gather astrological data.
+// This adds a layer of archetypal meaning.
 DEFINE AstrologicalData:
-  ZodiacSign: // Zodiac sign (e.g., Aries, Taurus, etc.)
-  Element: // Corresponding elemental symbol (e.g., Fire, Water, Air, Earth)
-  Modality: // Cardinal, Fixed, or Mutable
-  AstrologicalTraits: // Personality characteristics associated with the sign
+  ZodiacSign: // The character's zodiac sign (e.g., Aries, Taurus, etc.).
+  Element: // The element associated with the sign (Fire, Water, Air, Earth).
+  Modality: // The modality associated with the sign (Cardinal, Fixed, or Mutable).
+  AstrologicalTraits: // Personality characteristics typically associated with the sign.
 
 // c. Extract from Name Analysis Data Set
+// Analyze the character's name for symbolic meaning.
 DEFINE NameData:
-  Name: // Character's name (e.g., "Astra")
-  NameMeaning: // Meaning of the name (e.g., Star for "Astra")
-  NameSymbols: // Symbolic representation of the name based on meaning (e.g., StarSymbol for "Astra")
-  SignificantLetters: // Identify important letters or initials
-  Numerology (Optional): // Assign numerical value to name for symbolic mapping
+  Name: // The character's full name (e.g., "Astra").
+  NameMeaning: // The etymological or assigned meaning of the name (e.g., "Star" for "Astra").
+  NameSymbols: // Any symbols directly associated with the name's meaning (e.g., a Star Symbol for "Astra").
+  SignificantLetters: // Important initials or letters that can be turned into symbols.
+  Numerology (Optional): // Assign a numerical value to the name for further symbolic mapping.
 
-// 2. Map Information to Universal Symbology
+// Step 2: Map Information to Universal Symbology
+// Translate the extracted data points into their corresponding UWS symbols.
 
 // a. Assign Base Symbols
+// This section lists the core symbols for quick reference during the mapping process.
 DEFINE BaseSymbols:
   Point (•): Represents origin, existence
   Line (—): Represents journey, connection
@@ -53,9 +63,10 @@ DEFINE BaseSymbols:
   Wave (≈): Represents energy, emotion
 
 // b. Incorporate Dualities and Modalities
+// Reference the dualities and modalities for mapping character traits.
 DEFINE Dualities:
-  MasculineSymbols: Angle, Point, Line
-  FeminineSymbols: Curve, Circle, Wave
+  MasculineSymbols: Angle, Point, Line // For active, assertive traits.
+  FeminineSymbols: Curve, Circle, Wave // For passive, receptive traits.
 
 DEFINE Modalities:
   Cardinal (Angle ∠): Action, direct initiative
@@ -63,12 +74,14 @@ DEFINE Modalities:
   Mutable (Curve ~): Flexibility, adaptability
 
 // c. Reflect Astrological Elements
+// Map the character's element to a specific directional or conceptual symbol.
 DEFINE Elements:
   Fire (↑): Passion, energy
   Water (↓): Emotion, intuition
   Air (↔): Thought, communication
   Earth (⊥): Practicality, groundedness
 
+// Logic to assign the correct element symbol based on the AstrologicalData.
 ASSIGN ElementSymbol:
   IF AstrologicalData.Element = "Fire" THEN Symbol = FireSymbol (↑)
   IF AstrologicalData.Element = "Water" THEN Symbol = WaterSymbol (↓)
@@ -76,50 +89,62 @@ ASSIGN ElementSymbol:
   IF AstrologicalData.Element = "Earth" THEN Symbol = EarthSymbol (⊥)
 
 // d. Map Name Meanings to Symbols
+// Define specific symbols that can be derived from the character's name.
 DEFINE NameSymbols:
-  StarSymbol (✶) // For names like "Astra" meaning "Star"
-  SunSymbol (☉) // For names like "Sol" meaning "Sun"
-  MoonSymbol (☾) // For names meaning "Moon"
+  StarSymbol (✶) // For names like "Astra" or "Estelle" meaning "Star".
+  SunSymbol (☉) // For names like "Sol" or "Cyrus" meaning "Sun".
+  MoonSymbol (☾) // For names like "Luna" or "Selene" meaning "Moon".
   
+// Define how to handle initials or significant letters.
 DEFINE InitialSymbols:
-  Symbol for Initial Letters: Point (•) for beginnings, or assign custom symbols for key letters
+  Symbol for Initial Letters: Point (•) for beginnings, or assign custom symbols for key letters.
 
-// 3. Construct the Character Profile Using UWS
+// Step 3: Construct the Character Profile Using UWS
+// Combine the mapped symbols into a coherent structure using UWS grammar rules.
 
 // a. Define Core Symbol Structure
+// Select a primary symbol to represent the character's fundamental essence or identity.
 DEFINE CoreSymbol:
   SELECT Primary BaseSymbol for character's core identity or essence:
-    IF Origin = "Celestial" THEN CoreSymbol = Circle (◯)
-    IF Character = Brave THEN CoreSymbol = Triangle (△)
+    // Example logic for selecting the core symbol.
+    IF Origin = "Celestial" THEN CoreSymbol = Circle (◯) // Wholeness, cosmic origin.
+    IF Trait = "Brave" THEN CoreSymbol = Triangle (△) // Strength, stability.
 
 // b. Add Personality and Role Symbols
+// Layer additional symbols on top of or adjacent to the core symbol.
 DEFINE PersonalitySymbols:
+  // Add a collection of symbols that represent the character's main personality traits.
   ADD symbols that represent personality traits:
     IF Trait = Brave THEN ADD Triangle (△)
     IF Trait = Wise THEN ADD Spiral (🌀)
     IF Trait = Mysterious THEN ADD Wave (≈)
 
+// Select a symbol that represents the character's role or class.
 DEFINE RoleSymbol:
   SELECT Role:
     IF Role = "Warrior" THEN RoleSymbol = SwordSymbol (⚔)
     IF Role = "Mage" THEN RoleSymbol = StarSymbol (✶)
 
 // c. Incorporate Astrological Symbols
+// Combine the element and modality symbols to create an astrological signature.
 DEFINE AstrologicalProfile:
   ElementSymbol = Elements from AstrologicalData (e.g., Fire, Water)
   ModalitySymbol = Modalities (e.g., Cardinal, Fixed)
   
+// This combination creates a more nuanced astrological symbol.
 COMBINE:
   ElementSymbol + ModalitySymbol:
+    // Example: A Cardinal Fire sign (Aries) would combine the symbols for Angle and Fire.
     Example: Cardinal Fire (Angle + FireSymbol ↑)
 
 // d. Apply Grammar and Syntax Rules
+// Reference the grammatical rules for arranging the final symbols.
 DEFINE SymbolCombination:
-  Adjacency: Place symbols side by side to combine meanings
-  Superimposition: Overlay symbols to merge meanings
-  Encapsulation: Enclose one symbol within another to indicate containment
+  Adjacency: Place symbols side by side to combine meanings.
+  Superimposition: Overlay symbols to merge meanings.
+  Encapsulation: Enclose one symbol within another to indicate containment.
 
-// Example:
+// Example of a final character symbol structure using these rules.
 CharacterSymbol:
   Encapsulate(
     Superimpose(
@@ -136,41 +161,47 @@ CharacterSymbol:
     NameSymbol
   )
 
-// 4. Create the Symbolic Representation
+// Step 4: Create the Symbolic Representation
+// This step involves drafting the final visual layout of the character's symbol.
 
 // a. Draft the Symbol Sequence
+// Define the final combined symbol using the grammar rules.
 DEFINE CharacterSymbol:
+  // Example construction:
   Encapsulate(
     Superimpose(
       CoreSymbol, 
-      PersonalitySymbols // Combine symbols for personality traits
+      PersonalitySymbols // Combine core identity with personality traits.
     ),
-    RoleSymbol // Overlay with the role symbol (e.g., Mage symbol)
+    RoleSymbol // Overlay the result with the character's role symbol.
   )
   AdjacentTo(
-    ElementSymbol, // Place element symbol adjacent to core symbol
-    ModalitySymbol // Combine element with modality symbol for astrological representation
+    ElementSymbol, // Place the astrological element symbol nearby.
+    ModalitySymbol // Place the astrological modality symbol nearby.
   )
   Enclose(
-    NameSymbol // Encapsulate the character’s name symbol
+    NameSymbol // Encapsulate the entire structure with the character’s name symbol.
   )
 
 // b. Visual Arrangement
-// Layout the symbols in a meaningful way:
-// Core and Personality in the center, with astrological and name symbols surrounding or encapsulating them.
+// This is a conceptual step describing the final artistic layout.
+// The arrangement should be aesthetically pleasing and semantically meaningful.
+// For example: Core and Personality symbols at the center, surrounded by astrological and name symbols.
 
+// Output the final symbolic structure (conceptually).
 PRINT CharacterSymbol
 
-// 5. Interpret the Combined Symbols
-
-// Provide an interpretation of the final symbolic structure based on the arrangement of symbols
+// Step 5: Interpret the Combined Symbols
+// The final step is to provide a textual interpretation of the complete symbolic profile.
+// This explains what each symbol and its placement means for the character.
 DEFINE Interpretation:
-  CoreSymbol: Represents the character's core essence
-  PersonalitySymbols: Each symbol represents specific traits (e.g., bravery, wisdom)
-  RoleSymbol: The role or profession of the character (e.g., Mage)
-  AstrologicalProfile: Represents their elemental and modal alignment (e.g., Cardinal Fire)
-  NameSymbol: Encapsulates the character's identity (name meaning)
+  CoreSymbol: Represents the character's core essence (e.g., "Circle for celestial origin").
+  PersonalitySymbols: Each symbol represents a specific trait (e.g., "Triangle for bravery").
+  RoleSymbol: The character's profession or archetype (e.g., "Sword for Warrior").
+  AstrologicalProfile: Represents their elemental and modal alignment (e.g., "Cardinal Fire for initiative and passion").
+  NameSymbol: Encapsulates the character's identity via their name's meaning.
 
+// Output the final interpretation as a text description.
 PRINT Interpretation
 
 // End of Pseudocode
