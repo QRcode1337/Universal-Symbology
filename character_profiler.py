@@ -1,10 +1,27 @@
 import json
 
+
 class CharacterProfiler:
+    """A class to generate symbolic profiles for characters.
+
+    This class uses a symbology file to map character traits, roles, and other
+    attributes to a set of symbols. It is designed to be extensible, allowing
+    for the addition of new symbols and profiling rules.
+
+    Attributes:
+        symbology (dict): The loaded symbology data from the JSON file.
+        symbols (dict): A simplified dictionary of symbols extracted from the
+            symbology data.
+    """
     _symbology_cache = {}
     _symbols_cache = {}
     
     def __init__(self, symbology_file):
+        """Initializes the CharacterProfiler with a symbology file.
+
+        Args:
+            symbology_file (str): The path to the JSON symbology file.
+        """
         if symbology_file not in self._symbology_cache:
             with open(symbology_file, 'r') as f:
                 self._symbology_cache[symbology_file] = json.load(f)
@@ -17,16 +34,28 @@ class CharacterProfiler:
         self.symbols = self._symbols_cache[symbology_file]
 
     def _find_section(self, section_name):
-        """Finds a section by name in the symbology data."""
+        """Finds a section by name in the symbology data.
+
+        Args:
+            section_name (str): The name of the section to find.
+
+        Returns:
+            dict: The section data, or None if not found.
+        """
         for section in self.symbology.get("hasSection", []):
             if section.get("name") == section_name:
                 return section
         return None
 
     def _extract_symbols(self):
-        """
-        Parses the complex JSON-LD structure to extract a simpler
-        dictionary of symbols, elements, modalities, and zodiac signs.
+        """Parses the JSON-LD structure to extract a dictionary of symbols.
+
+        This method simplifies the complex JSON-LD structure into a more
+        accessible dictionary of symbols, including elements, modalities, and
+        zodiac signs.
+
+        Returns:
+            dict: A dictionary of symbols.
         """
         symbols = {"zodiac": {}}
         framework = self._find_section("Universal Symbology Framework")
@@ -70,12 +99,17 @@ class CharacterProfiler:
         return symbols
 
     def profile_character(self, character_data):
-        """
-        Generates a symbolic profile for a character.
-        """
-        # This is where the logic from the pseudocode will be implemented.
-        # For now, it's a placeholder.
+        """Generates a symbolic profile for a character.
 
+        This method takes a dictionary of character data and returns a symbolic
+        profile based on the rules defined in the class.
+
+        Args:
+            character_data (dict): A dictionary containing character data.
+
+        Returns:
+            dict: A dictionary representing the character's symbolic profile.
+        """
         core_symbol = self._determine_core_symbol(character_data)
         personality_symbols = self._determine_personality_symbols(character_data)
         role_symbol = self._determine_role_symbol(character_data)
@@ -96,9 +130,14 @@ class CharacterProfiler:
         return profile
 
     def _determine_core_symbol(self, character_data):
-        """Determines the core symbol based on primary traits or origin."""
-        # This logic is based on the examples in the pseudocode.
-        # A more complex implementation could have a scoring system.
+        """Determines the core symbol based on primary traits or origin.
+
+        Args:
+            character_data (dict): A dictionary containing character data.
+
+        Returns:
+            str: The name of the core symbol.
+        """
         traits = character_data.get("PersonalityTraits", [])
         if "Brave" in traits:
             return self.symbols.get("Triangle", {}).get("name")
@@ -108,7 +147,14 @@ class CharacterProfiler:
         return self.symbols.get("Point", {}).get("name")
 
     def _determine_personality_symbols(self, character_data):
-        """Determines personality symbols from a list of traits."""
+        """Determines personality symbols from a list of traits.
+
+        Args:
+            character_data (dict): A dictionary containing character data.
+
+        Returns:
+            list: A list of personality symbol names.
+        """
         trait_map = {
             "Brave": "Triangle",
             "Wise": "Spiral",
@@ -121,7 +167,14 @@ class CharacterProfiler:
                 if trait in trait_map and trait_map[trait] in self.symbols]
 
     def _determine_role_symbol(self, character_data):
-        """Determines the role symbol."""
+        """Determines the role symbol for the character.
+
+        Args:
+            character_data (dict): A dictionary containing character data.
+
+        Returns:
+            str: The name of the role symbol.
+        """
         role_map = {
             "Warrior": "SwordSymbol",
             "Mage": "StarSymbol",
@@ -131,7 +184,16 @@ class CharacterProfiler:
         return self.symbols.get(symbol_name, {"name": "UnknownRole"}).get("name")
 
     def _determine_astrological_profile(self, character_data):
-        """Looks up the character's zodiac sign and returns its element and modality."""
+        """Looks up the character's zodiac sign and returns its profile.
+
+        The profile includes the sign's element and modality.
+
+        Args:
+            character_data (dict): A dictionary containing character data.
+
+        Returns:
+            dict: A dictionary with the astrological profile.
+        """
         astro_data = character_data.get("AstrologicalData", {})
         sign_name = astro_data.get("ZodiacSign")
         if sign_name and sign_name in self.symbols["zodiac"]:
@@ -148,7 +210,14 @@ class CharacterProfiler:
         }
 
     def _determine_name_symbol(self, character_data):
-        """Determines a symbol based on the meaning of the character's name."""
+        """Determines a symbol based on the meaning of the character's name.
+
+        Args:
+            character_data (dict): A dictionary containing character data.
+
+        Returns:
+            str: The name of the symbol.
+        """
         name_map = {
             "Star": "StarSymbol",
             "Sun": "SunSymbol",

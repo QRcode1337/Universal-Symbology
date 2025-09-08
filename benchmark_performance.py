@@ -3,7 +3,16 @@ import json
 from character_profiler import CharacterProfiler
 
 def benchmark_original_vs_optimized():
-    """Benchmark the performance improvement from caching optimization."""
+    """Benchmarks the CharacterProfiler's caching performance.
+
+    This function measures the time taken for the first instantiation of
+    CharacterProfiler (a cache miss) and compares it with subsequent
+    instantiations (cache hits). It prints the results to the console.
+
+    Returns:
+        tuple: A tuple containing the time for the first instantiation and the
+               total time for subsequent instantiations.
+    """
     symbology_file = "textPrimer-UniversalSymbology_v01a.jsonld"
     
     CharacterProfiler._symbology_cache.clear()

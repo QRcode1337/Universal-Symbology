@@ -5,10 +5,15 @@ from character_profiler import CharacterProfiler
 
 
 class TestCharacterProfiler(unittest.TestCase):
-    """Test suite for CharacterProfiler class."""
+    """Test suite for the CharacterProfiler class.
+
+    This class contains a series of tests to ensure that the
+    CharacterProfiler class functions as expected. It covers
+    initialization, caching, and the profiling process itself.
+    """
     
     def setUp(self):
-        """Set up test fixtures."""
+        """Set up test fixtures before each test method."""
         self.symbology_file = "textPrimer-UniversalSymbology_v01a.jsonld"
         self.test_character = {
             "Name": "TestCharacter",
@@ -22,13 +27,22 @@ class TestCharacterProfiler(unittest.TestCase):
         }
         
     def test_profiler_initialization(self):
-        """Test that CharacterProfiler initializes correctly."""
+        """Test that the CharacterProfiler initializes correctly.
+
+        Ensures that the symbology and symbols attributes are loaded
+        and are not None.
+        """
         profiler = CharacterProfiler(self.symbology_file)
         self.assertIsNotNone(profiler.symbology)
         self.assertIsNotNone(profiler.symbols)
         
     def test_caching_functionality(self):
-        """Test that caching works correctly."""
+        """Test that the caching mechanism works as expected.
+
+        Verifies that the symbology and symbols data are cached after the
+        first instantiation and that subsequent instantiations use the
+        cached data.
+        """
         CharacterProfiler._symbology_cache.clear()
         CharacterProfiler._symbols_cache.clear()
         
@@ -41,7 +55,11 @@ class TestCharacterProfiler(unittest.TestCase):
         self.assertEqual(profiler1.symbols, profiler2.symbols)
         
     def test_character_profiling(self):
-        """Test that character profiling works correctly."""
+        """Test the overall character profiling process.
+
+        Ensures that the profile_character method returns a dictionary
+        with the expected keys and that the data types are correct.
+        """
         profiler = CharacterProfiler(self.symbology_file)
         profile = profiler.profile_character(self.test_character)
         
@@ -52,8 +70,13 @@ class TestCharacterProfiler(unittest.TestCase):
         self.assertIsInstance(profile['Personality'], list)
         self.assertTrue(len(profile['Personality']) > 0)
         
-    def test_personality_symbol_optimization(self):
-        """Test that the optimized personality symbol method works."""
+    def test_personality_symbol_determination(self):
+        """Test the determination of personality symbols.
+
+        Verifies that the _determine_personality_symbols method correctly
+        maps personality traits to symbols and handles various edge cases,
+        such as empty or invalid trait lists.
+        """
         profiler = CharacterProfiler(self.symbology_file)
         
         character_data = {"PersonalityTraits": ["Brave", "Wise"]}
